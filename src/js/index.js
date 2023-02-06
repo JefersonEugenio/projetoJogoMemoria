@@ -4,10 +4,12 @@ var existeCartaoVirado = false;
 var primeiroCartao, segundoCartao;
 
 var placar = 0;
-var tempo = 15;
+var tempo = 5;
+var tempos = document.getElementById("tempo");
 
 var intervalo = setInterval(function() {
   if ( tempo == 0) {
+    tempos.style.color = 'red';
     clearInterval(intervalo);
     cartoes.forEach(function (cartao) {
       cartao.addEventListener("click", virarCartao);
@@ -16,7 +18,6 @@ var intervalo = setInterval(function() {
   }
   tempo = tempo - 1;
   document.getElementById("tempo").innerHTML = tempo;
-  // document.getElementById("tempo").innerHTML.
 }, 1000);
 
 function virarCartao() {
