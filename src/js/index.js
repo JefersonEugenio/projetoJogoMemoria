@@ -3,6 +3,22 @@ var cartoes = document.querySelectorAll(".cartao");
 var existeCartaoVirado = false;
 var primeiroCartao, segundoCartao;
 
+var placar = 0;
+var tempo = 15;
+
+var intervalo = setInterval(function() {
+  if ( tempo == 0) {
+    clearInterval(intervalo);
+    cartoes.forEach(function (cartao) {
+      cartao.addEventListener("click", virarCartao);
+    });
+    return;
+  }
+  tempo = tempo - 1;
+  document.getElementById("tempo").innerHTML = tempo;
+  // document.getElementById("tempo").innerHTML.
+}, 1000);
+
 function virarCartao() {
   this.classList.add("virado");
 
@@ -16,6 +32,8 @@ function virarCartao() {
     if (primeiroCartao.dataset.info === segundoCartao.dataset.info) {
       primeiroCartao.removeEventListener("click", virarCartao);
       segundoCartao.removeEventListener("click", virarCartao);
+      placar = placar + 1;
+      document.getElementById('resultado').innerHTML = placar;
     } else {
       setTimeout(function () {
         primeiroCartao.classList.remove("virado");
