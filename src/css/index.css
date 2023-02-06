@@ -7,7 +7,14 @@
 body {
     height: 100vh;
     display: flex;
-    background-color: blue;
+    background-image: url("../assets/imgs/background.jpg");
+    background-size: cover;
+}
+
+h1 {
+    text-align: center;
+    font-size: 80px;
+    color: white;
 }
 
 .jogo {
@@ -16,10 +23,37 @@ body {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
+    perspective: 1000px;
 }
 
-.frente-cartao, .verso-carto {
-    width: 100%;
-    
+.cartao {
+    width: calc(25% - 10px); 
+    height: calc(33.333% - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
 
+.cartao:active{
+    transform: scale(1.5);
+    transition: transform .2s;
+}
+
+.cartao.virado{
+    transform: rotateY(180deg);
+}
+
+.frente-cartao, .verso-cartao {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* background-color: white;  se for foto usa SVG */
+    backface-visibility: hidden;
+}
+
+.frente-cartao{
+    transform: rotateY(180deg);
 }
