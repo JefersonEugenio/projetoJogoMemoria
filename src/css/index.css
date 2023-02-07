@@ -20,7 +20,7 @@ body {
     align-items: center;
     justify-content: space-evenly;
     color: white;
-    width: 60%;
+    width: 100%;
     text-align: center;
     font-size: 80px;
 }
@@ -77,4 +77,36 @@ body {
 
 .frente-cartao{
     transform: rotateY(180deg);
+}
+
+#recordes{
+    margin-top: 30px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    display: none;
+}
+
+td{
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    font-weight: bold;
+    text-align: center;
+    width: 200px;
+}
+
+#reiniciar{
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    margin-top: 10px;
+    height: 30px;
+}
+
+#reiniciar:hover{
+    color: white;
+    background-color: black;
 }
