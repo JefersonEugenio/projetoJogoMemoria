@@ -36,7 +36,13 @@ function virarCartao() {
       placar = placar + 1;
       document.getElementById('resultado').innerHTML = placar;
     } else {
+      cartoes.forEach(function (cartao) {
+        cartao.removeEventListener("click", virarCartao);
+      });
       setTimeout(function () {
+        cartoes.forEach(function (cartao) {
+          cartao.addEventListener("click", virarCartao);
+        });
         primeiroCartao.classList.remove("virado");
         segundoCartao.classList.remove("virado");
       }, 2000);
