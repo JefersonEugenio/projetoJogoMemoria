@@ -87,6 +87,28 @@ function virarCartao() {
   }
 }
 
+function reiniciarPlacar() {
+    // localStorage.clear();
+    
+}
+
+function reiniciarPlacar() {
+  console.log(resultadosExistentes.length);
+  for (var i = 2; i < resultadosExistentes.length + 2; i++) {
+    var resultado = document.querySelector(`#resultados > tr:nth-child(2)`);
+    if (resultado) {
+      document.querySelector("#resultados").removeChild(resultado);
+    }
+  }
+
+  localStorage.clear();
+  alert("Placar reiniciado!");
+}
+
+function reiniciarJogo() {
+    location.reload();
+}
+
 cartoes.forEach(function (cartao) {
   cartao.addEventListener("click", virarCartao);
 });

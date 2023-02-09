@@ -96,7 +96,7 @@ td{
     width: 200px;
 }
 
-#reiniciar{
+.botao {
     width: 100%;
     border-radius: 5px;
     background-color: white;
@@ -106,7 +106,7 @@ td{
     height: 30px;
 }
 
-#reiniciar:hover{
+.botao:hover {
     color: white;
     background-color: black;
 }
