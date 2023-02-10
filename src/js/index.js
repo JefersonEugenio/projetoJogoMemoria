@@ -16,19 +16,31 @@ if (itensStorage) {
 console.log(resultadosJogadores);
 
 var placar = 0;
-var tempo = 15;
+var tempo = 60;
 var tempos = document.getElementById("tempo");
 
 var intervalo = setInterval(function() {
-  if ( tempo == 0) {
-    tempos.style.color = 'red';
+  if (tempo == 0 || placar == 6) {
     clearInterval(intervalo);
-    alert("Tempo esgotado!");
-    var nome = prompt("Digite o seu nome:");
+    if (placar == 6) {
+      alert(
+        "Parabéns! Você ganhou! O seu tempo foi de " + tempo + " segundos."
+      );
+    } else {
+      alert("Tempo esgotado!");
+    }
+    var nome = "";
+    while (nome.length < 3) {
+      nome = prompt("Digite o seu nome:");
+      if (nome.length < 3) {
+        alert("O nome precisa ter mais de 2 caracteres");
+      }
+    }
     //Criar um objeto
     var resultado = {
       nomeJogador: nome,
       pontuacao: placar,
+      tempo: tempo,
     };
 
     resultadosExistentes.push(resultado);
@@ -38,14 +50,19 @@ var intervalo = setInterval(function() {
 
     var tabela = document.getElementById("resultados");
 
+    ordenarDados();
+
     resultadosExistentes.sort().forEach(function (resultado) {
       var tr = document.createElement("tr");
       var tdNome = document.createElement("td");
       tdNome.innerHTML = resultado.nomeJogador;
       var tdPontuacao = document.createElement("td");
       tdPontuacao.innerHTML = resultado.pontuacao;
+      var tdTempo = document.createElement("td");
+      tdTempo.innerHTML = resultado.tempo;
       tr.appendChild(tdNome);
       tr.appendChild(tdPontuacao);
+      tr.appendChild(tdTempo);
       tabela.appendChild(tr);
     });
     cartoes.forEach(function (cartao) {
@@ -87,9 +104,18 @@ function virarCartao() {
   }
 }
 
-function reiniciarPlacar() {
-    // localStorage.clear();
-    
+cartoes.forEach(function (cartao) {
+  var numero = Math.floor(Math.random() * 12);
+  cartao.style.order = numero;
+});
+
+function ordenarDados() {
+  var melhorTempo = resultadosExistentes[0].tempo;
+  resultadosExistentes.forEach(function (resultado) {
+    if (resultado.tempo < melhorTempo) {
+      resultadosExistentes.push(melhorTempo);
+    }
+  });
 }
 
 function reiniciarPlacar() {
