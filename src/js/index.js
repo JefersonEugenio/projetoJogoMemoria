@@ -16,11 +16,11 @@ if (itensStorage) {
 console.log(resultadosJogadores);
 
 var placar = 0;
-var tempo = 60;
+var tempo = 0;
 var tempos = document.getElementById("tempo");
 
 var intervalo = setInterval(function() {
-  if (tempo == 0 || placar == 6) {
+  if (tempo == 60 || placar == 6) {
     clearInterval(intervalo);
     if (placar == 6) {
       alert(
@@ -70,7 +70,7 @@ var intervalo = setInterval(function() {
     });
     return;
   }
-  tempo = tempo - 1;
+  tempo = tempo + 1;
   document.getElementById("tempo").innerHTML = tempo;
 }, 1000);
 
